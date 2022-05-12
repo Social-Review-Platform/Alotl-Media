@@ -22,6 +22,7 @@ router.post('/createreview',
   reviewController.createReview,
   (req, res) => {
     // redirect to what route?
+<<<<<<< HEAD
     res.redirect('/mypage');
   });
 
@@ -29,6 +30,11 @@ router.post('/createreview',
 //   console.log('hhihi', req.body);
 //   res.redirect('/home')
 // });
+=======
+    res.redirect('/home')
+  }
+);
+>>>>>>> 594d78a94aac18525693fe86cc9eefa6498e723c
 
 // router.post('/', mediaController.findMedia, mediaController.createMedia, mediaController.findUser, mediaController.createReview, (req, res) => {
 //   return res.status(200).json(res.locals.review)
