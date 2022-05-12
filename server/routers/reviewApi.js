@@ -22,13 +22,9 @@ router.post('/createreview',
   reviewController.createReview,
   (req, res) => {
     // redirect to what route?
-    res.redirect('/mypage');
-  });
-
-// router.post('/createreview',  (req, res) => {
-//   console.log('hhihi', req.body);
-//   res.redirect('/home')
-// });
+    res.redirect('/home')
+  }
+);
 
 // router.post('/', mediaController.findMedia, mediaController.createMedia, mediaController.findUser, mediaController.createReview, (req, res) => {
 //   return res.status(200).json(res.locals.review)
