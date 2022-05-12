@@ -12,7 +12,7 @@ body {
             header
  * * * * * * * * * * * * */
 .nav-container {
-  margin: 20px auto;
+  margin: 30px auto;
   height: 100px;
   display:flex;
   animation: fade 0.4s ease-in;
@@ -25,6 +25,7 @@ body {
 }
 
 .title-container {
+  line-height: 50px;
   width: 360px;
   height: 100px;
   display:flex;
@@ -43,6 +44,7 @@ body {
 .icon-container {
   height: 100px;
   width: 100px;
+  min-width: 100px;
   background-image: linear-gradient(220deg, #f8f4ee, #f8f4ee);
   border-radius: 30px;    
   display: flex;
@@ -87,9 +89,9 @@ body {
   width: 230px;
   margin: 100px auto;
   padding: 20px 10px 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 2px 2px 0 #00000033;
-  background: #f6e3c8;
+  background: #f7eddf;
 }
 
 .usercred-title {
@@ -139,7 +141,7 @@ input:focus {
 /* * * * * * * * * * * * *
     review-creator
  * * * * * * * * * * * * */
-.review-creator-container{    
+ .review-creator-container{    
   width: 230px;
   background-color: #f8f4ee;
   box-shadow: 0 2px 2px 0 #00000033;
@@ -156,4 +158,216 @@ input:focus {
   justify-content: center;
   flex-direction: column;
   align-content: center;
+}
+
+.review-creator select{  
+  font-family: 'Dosis', sans-serif;
+  padding: 5px 10px;
+  margin: 5px;
+  border: none;  
+  border-radius: 10px;
+}
+.review-creator select:hover, select:focus{
+  box-shadow: 1px 1px 4px 2px #0000001a;
+  outline-width: 0;
+}
+.review-creator input{ 
+  font-family: 'Dosis', sans-serif;
+  padding: 5px 10px;
+  margin: 5px;
+  border: none;  
+  border-radius: 10px;
+}
+.review-creator input:hover, input:focus{
+  box-shadow: 1px 1px 4px 2px #0000001a;
+  outline-width: 0;
+}
+.review-creator textarea{
+  font-family: 'Dosis', sans-serif;
+  resize: none;
+  padding: 5px;
+  margin: 5px;
+  border: none;  
+  border-radius: 10px;
+}
+.review-creator textarea:hover, textarea:focus{
+  box-shadow: 1px 1px 4px 2px #0000001a;
+  outline-width: 0;
+}
+
+.rating-container {
+  position:relative;
+  height:50px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.did-you-like-it {
+  font-size: 17px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.rating-container input{
+  padding: 5px;
+  margin-right: 2px;
+  cursor: pointer;
+  position:relative;
+  height:45px;
+  border-radius: 16px;
+  border-style: none;
+  background-color: #f1e7c6;
+}
+.rating-container input:hover{
+  background-color: #f6e2a4;
+  box-shadow: 0 2px 2px 0 #00000033;
+}
+.switch {
+  position: absolute;
+  top: 65%;
+  left: 43%;
+  width: 115px;
+  height: 45px;
+  text-align: center;
+  margin: -30px 0 0 -75px;
+  background: #50ebd1;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+}
+.switch span {
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0px 0px -4px;
+  background: #fff;
+  display: block;
+  transform: rotate(-45deg);
+  transition: all 0.2s ease;
+}
+.switch span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 12px;
+  margin-top: -8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+input[type=radio] {
+  display: none;
+
+  width:50px;
+  left:0;
+  
+}
+.switch label {
+  cursor: pointer;
+  color: #00000033;
+  width: 60px;
+  line-height: 45px;
+  transition: all 0.2s ease;
+}
+label[for=yes] {
+  position: absolute;
+  left: 0px;
+  height: 20px;
+}
+label[for=no] {
+  position: absolute;
+  right: 0px;
+}
+#no:checked ~ .switch {
+  background: #e06552;
+}
+#no:checked ~ .switch span {
+  background: #fff;
+  margin-left: -8px;
+}
+#no:checked ~ .switch span:after {
+  background: #fff;
+  height: 20px;
+  margin-top: -8px;
+  margin-left: 8px;
+}
+#yes:checked ~ .switch label[htmlFor=yes] {
+  color: #fff;
+}
+#no:checked ~ .switch label[htmlFor=no] {
+  color: #fff;
+}
+
+
+
+
+/* * * * * * * * * * * * *
+      Review Cards
+ * * * * * * * * * * * * */
+
+.card-container {  
+  width: 1090px;
+  margin: 100px auto;
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, 240px); 
+  grid-gap: 20px; 
+  justify-content: space-between; 
+}
+
+.card {
+  height: 300px;
+  width: 230px;
+  position:relative;
+  background-color: #f8f4ee;
+  box-shadow: 0 2px 2px 0 #00000033;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Dosis', sans-serif;
+  gap: 0px;
+}
+
+.card-title {
+  margin-top: 10px;
+  font-size: 23px;
+}
+
+.desc-container{
+  display:flex;
+  gap: 5px;
+  align-items: baseline;
+  color:grey;
+  font-size: 13px;
+}
+.card-type {
+  color:rgb(102, 99, 99);
+  font-size: 15px;
+}
+.card-username {
+  color:rgb(97, 95, 95);
+  font-size: 15px;
+}
+.card-review {
+  margin:10px;
+  background-color:#f2f6f5;
+  color:rgb(72, 68, 68);
+}
+.card-rating {
+  color:white;
+  line-height: 40px;
+  width: 100px;
+  text-align: center;
+  border-radius: 30px;
+  position:absolute;
+  top: 238px
+}
+
+.card .rating1{
+  background-color: #50ebd1;
+}
+
+.card .rating0{
+  background-color: #e06552;
 }

@@ -52,15 +52,15 @@ sessionController.removeSession = (req, res, next) => {
 sessionController.verifySession = (req, res, next) => {
   //verify if the session data is in user table
   console.log('verifySession fired', res.locals.ssid);
-  const ssid = res.locals.ssid;("$%$%^$&%^HGJVJHG")
-  const user = res.locals.whatev("andrea")
+  const ssid = res.locals.ssid;
   //prepared query string for sql db
   const query = 'SELECT _id, username FROM "public"."public.User" WHERE session=$1'
   db.query(query, [ssid])
     .then(data => {
+      console.log(data.rows[0]);
       res.locals.user = data.rows[0].username
       res.locals.user_id = data.rows[0]._id
-      return next()
+      return next();
     })
     .catch(err => {
       return res.redirect('/login')

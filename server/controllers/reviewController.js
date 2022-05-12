@@ -4,15 +4,21 @@ const reviewController = {};
 
 
 reviewController.createReview = (req, res, next) => {
- 
+  // console.log(req.body.radio);
+  // let rating = 0;
+  // if (req.body.radio === 'radioYes'){
+  //   rating = 1;
+  // }
 
   // console.log('getting to createReview')
-  const { user_id, review, rating } = req.body;
+  const { user_id, review, rating} = req.body;
   const mediaId = res.locals.mediaId;
   // console.log('review and rating: ', review, rating, '\n')
   // console.log('res.locals: ', res.locals);
+
+  console.log(user_id, mediaId, review, rating)
   const query =
-    `INSERT INTO "public"."reviews" ("user_id", "media_id", "review", "rating")
+    `INSERT INTO "public"."public.Review" ("user_id", "media_id", "review", "rating")
     VALUES ($1, $2, $3, $4)`;
   db.query(query, [user_id, mediaId, review, rating])
     .then(data => {
@@ -33,20 +39,25 @@ reviewController.createReview = (req, res, next) => {
 
 
 reviewController.recentReview = (req, res, next) => {
-    const query = `SELECT "public"."public.User".username, "public"."public.Review".review, "public"."public.Review".rating, "public"."public.Media".title, "public"."public.Media".type
-    FROM "public"."public.User"
-    INNER JOIN "public"."public.Review"
-    ON "public"."public.User"._id = "public"."public.Review".user_id
-    INNER JOIN "public"."public.Media"
-    ON "public"."public.Review".media_id = "public"."public.Media"._id
-    ORDER BY "public"."public.Review"._id DESC LIMIT 20`;
+  console.log(req.query.filter);
 
-    db.query(query)
-    .then( data => {
-      console.log(data.rows);
-      res.locals.reviews = data.rows;
-      return next();
-    })
+  let query = `SELECT "public"."public.User".username, "public"."public.Review".review, "public"."public.Review".rating, "public"."public.Media".title, "public"."public.Media".type
+  FROM "public"."public.User"
+  INNER JOIN "public"."public.Review"
+  ON "public"."public.User"._id = "public"."public.Review".user_id
+  INNER JOIN "public"."public.Media"
+  ON "public"."public.Review".media_id = "public"."public.Media"._id `
+
+  query +=  ` ORDER BY "public"."public.Review"._id DESC LIMIT 19`;
+
+  console.log(query);
+
+  db.query(query)
+  .then( data => {
+    // console.log(data.rows);
+    res.locals.reviews = data.rows;
+    return next();
+  });
 
     
 }

@@ -47,10 +47,10 @@ module.exports = {
     },
     port: 8080,
     // enable HMR on the devServer
-    // hot: true,
+    hot: true,
     // // fallback to root for other urls
-    // historyApiFallback: true,
-
+    historyApiFallback: true,
+    constentBase: './',
     proxy: {
       '*': { target: 'http://localhost:3000' },
       '/api': { target: 'http://localhost:3000' },
