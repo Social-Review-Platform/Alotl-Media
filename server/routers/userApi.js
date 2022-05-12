@@ -15,12 +15,12 @@ router.post('/login', userController.verifyUser, sessionController.createSession
   return res.redirect('/');
 })
 
-
+// tested
 router.get('/logout', cookieController.getCookie, sessionController.removeSession, cookieController.clearCookie, (req, res) => {
-  return res.redirect('/');
+  return res.status(200).json({ message: 'Successfully logged out!'})
 })
 
-
+// tested
 router.get('/verifylogin', cookieController.getCookie, sessionController.verifySession, (req, res) => {
   return res.status(200).json({ username: res.locals.user, user_id: res.locals.user_id, loggedIn: true})
 })

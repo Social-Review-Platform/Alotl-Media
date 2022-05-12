@@ -1,84 +1,71 @@
 import React from "react";
 
 export default function(props) {
-
-  function handleClick(e) {
-    const user_id = 1;
-    const type = document.querySelector('#chooseType').value;
-    const title = document.querySelector('#newTitle').value;
-    const review = document.querySelector('#newReview').value;
-    const rating = document.querySelector('#rating-alotl').checked ? 1 : 0;
-    console.log('fired')
-    let newReview = {
-      user_id,
-      type,
-      title,
-      review,
-      rating
-    }
-    // props.handleNewReview(newReview)
-
-
-    // Post the Review
-      // If it's Succesful. 
-        // Add it to the reviewsState
-        // Reset the From Values to there original Value. 
-      // Else Log an Error
-
-    fetch('/api/createReview', {
-      method: 'POST',
-      body: JSON.stringify(newReview),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((res) => {
-        if (true) {
-        // if (res.status === 200) {
-          // Add it to the reviewsState
-          props.handleNewReview(newReview)
-          
-          // Reset the From Values to there original Value.
-          document.querySelector('#chooseType').value = 'Choose a Media Type';
-          document.querySelector('#newTitle').value = ''
-          document.querySelector('#newReview').value = ''
-          document.querySelector('#rating-alotl').checked = false;
-          
-        } else {
-          throw new Error('Review not created Succesfuly');
-        }
-      })
-      .catch((err) => console.log(err));
-  }
-
   return (
     <div className='review-creator-container'>
-      <div className="review-creator">
 
-        <select id='chooseType' className="" aria-label="Choose a Media Type" required>
-          <option selected>Choose a Media Type</option>
-          <option value="movie">Movie</option>
-          <option value="book">Book</option>
-          <option value="music">Music</option>
-        </select>
+        <form className="review-creator" method="POST" action='/api/review/createreview'>
+          <input type="hidden" name="user_id" value={props.user_id}></input>
+          <select name="type" required>
+            <option value="" defaultValue>Choose a Media Type</option>
+            <option value="Movie">Movie</option>
+            <option value="Book">Book</option>
+            <option value="Music">Music</option>
+          </select>
+          <input type="text" placeholder="Title" name="title" required />
+          <textarea placeholder="Enter a short review! " rows="5" name="review" required ></textarea>
+          <div className="did-you-like-it">Did you like it alotl?</div>
+          <div className="rating-container">
+            <div className="toggle-radio">
+              <input type="radio" name="rating" id="yes" value={1} defaultChecked />
+              <input type="radio" name="rating" id="no" value={0}/>
+              <div className="switch">
+                <label htmlFor="yes">YES</label>
+                <label htmlFor="no">NO</label>
+                <span></span>
+              </div>
+            </div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
 
-        <input id="newTitle" className="" type="text" placeholder="Title" aria-label="Title" required />
-        <textarea className="" id="newReview" placeholder="Enter a short review" rows="3" required ></textarea>
-        <p>I would reccomend this...</p>
-        <div class=''>
-          <input type="radio" className="" name="options" id="rating-alotl" autocomplete="off"/>
-          <label className="" style={{width: '45%'}} for="rating-alotl">ALOTL</label>
-          
-          <input type="radio" className=""  name="options" id="rating-not-alotl" autocomplete="off" />
-          <label className="" style={{width: '45%'}} for="rating-not-alotl">NOT ALOTL</label>
-        </div>
-        <div className=''>
-          <a onClick={handleClick} className="" style={{width: '90%', height: '4em'}}>Submit</a>
-        </div>
-      </div>
     </div>
   )
 }
+
+
+// import React from "react";
+
+// export default function(props) {
+//   return (
+//     <div className='review-creator-container'>
+
+//         <form className="review-creator" method="POST" action='/api/review/createreview'>
+//           <input type="hidden" name="user_id" value={props.user_id}></input>
+//           <select name="type" required>
+//             <option selected>Choose a Media Type</option>
+//             <option value="Movie">Movie</option>
+//             <option value="Book">Book</option>
+//             <option value="Music">Music</option>
+//           </select>
+//           <input type="text" placeholder="Title" name="title" required />
+//           <textarea placeholder="Write a short review! " rows="5" name="review" required ></textarea>
+//           <div className="did-you-like-it">Did you like it alotl?</div>
+//           <div className="swith-submit-container">
+//             <div className="switch-field">
+//               <input type="radio" id="radio-one" name="rating" value={1} checked/>
+//               <label htmlFor="radio-one">YES</label>
+//               <input type="radio" id="radio-two" name="rating" value={0} />
+//               <label htmlFor="radio-two">NO</label>
+//             </div>
+//             <input type="submit" value="POST" />
+//           </div>
+//         </form>
+
+//     </div>
+//   )
+// }
+
 
 
 

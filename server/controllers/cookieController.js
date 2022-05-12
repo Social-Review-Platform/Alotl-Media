@@ -17,6 +17,7 @@ cookieController.setCookie = (req, res, next) => {
 // res.locals.ssid
 cookieController.getCookie = (req, res, next) => {
   res.locals.ssid = req.cookies.ssid;
+  console.log(res.locals.ssid);
   return next();
 };
 

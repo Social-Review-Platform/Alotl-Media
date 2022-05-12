@@ -18,7 +18,6 @@ userController.createUser = (req, res, next) => {
     }
     return true;
   }
-
   const inputValidationResult = isInputValid(userName, userPassword, userPasswordConfirm);
   
   if (process.env.MODE === 'test'){
@@ -40,7 +39,7 @@ userController.createUser = (req, res, next) => {
     db.query(query)
       .then(data => {
         if (process.env.MODE === 'test') {
-          console.log('created')
+          console.log('User was created')
           return data;
         }
         return next();
@@ -57,20 +56,11 @@ userController.createUser = (req, res, next) => {
 };
 
 userController.verifyUser = (req, res, next) => {
-
   const username = req.body.username;
   const password = req.body.password;
-  
-  if (process.env.MODE === 'test'){
-    db = require('../models/testmodel.js'); 
-  } else {
-
-  }
-
-  // if()
-  
+  // console.log(username, password)
   const query =
-    `SELECT password FROM "public"."public.User" WHERE username = '${username}'`;
+  `SELECT password FROM "public"."public.User" WHERE username = '${username}'`;
   
 
   db.query(query)
@@ -80,7 +70,7 @@ userController.verifyUser = (req, res, next) => {
       //second argument is the hashed text
       //that the hased first argument has to match
       //in order to make "result" true.
-
+      // console.log(data.rows[0])
       bcrypt.compare(password, data.rows[0].password, function (err, result) {
         if (result) return next();
         console.log('Password does not match.');

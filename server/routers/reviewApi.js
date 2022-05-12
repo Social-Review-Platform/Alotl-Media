@@ -12,6 +12,7 @@ const router = express.Router();
 //   return res.status(200).json(res.locals.review)
 // })
 // HOPE THIS WORKS
+// IT WORKED - FROM FUTURE
 // create router for create review (/api/review/createreview)
 router.post('/createreview', 
   cookieController.getCookie, 
@@ -21,19 +22,20 @@ router.post('/createreview',
   reviewController.createReview,
   (req, res) => {
     // redirect to what route?
-    res.redirect('/home')
-  }
-  )
+    res.redirect('/mypage');
+  });
 
-// const mediaController = require('../controllers/mediaController');
-const reviewController = require('../controllers/reviewController');
-const router = express.Router();
+// router.post('/createreview',  (req, res) => {
+//   console.log('hhihi', req.body);
+//   res.redirect('/home')
+// });
 
 // router.post('/', mediaController.findMedia, mediaController.createMedia, mediaController.findUser, mediaController.createReview, (req, res) => {
 //   return res.status(200).json(res.locals.review)
 // });
 
-router.get('/recentReview', reviewController.recentReview, (req, res) => {
+router.get('/recentreview', reviewController.recentReview, (req, res) => {
+  // console.log(res.locals.reviews);
   return res.status(200).json(res.locals.reviews)
 });
 

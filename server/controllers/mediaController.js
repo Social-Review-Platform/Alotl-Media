@@ -4,7 +4,7 @@ const mediaController = {};
 
 mediaController.getMediaIdByTitle = (req, res, next) => {
   const {title, type} = req.body;
-  const query = 'SELECT _id FROM "public"."public.Media" WHERE (title=$1, type=$2)';
+  const query = 'SELECT _id FROM "public"."public.Media" WHERE title=$1 AND type=$2';
   db.query(query, [title, type])
     .then(data => {
       console.log(data);
@@ -29,8 +29,10 @@ mediaController.createMedia = (req, res, next) => {
   //if media already exists return next
   if (res.locals.mediaFound === true) return next();
   const {title, type} = req.body;
+  console.log('title', title);
+  console.log('type', title);
   const query =
-    'INSERT INTO "public"."Media" ("title", "type") VALUES ($1, $2) RETURNING _id';
+    `INSERT INTO "public"."public.Media" ("title", "type") VALUES ($1, $2) RETURNING _id`;
   db.query(query, [title, type])
     .then(data => {
       // console.log('data in createMedia: ', data)
