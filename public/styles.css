@@ -316,6 +316,7 @@ label[for=no] {
  * * * * * * * * * * * * */
 
 .card-container {  
+  animation: fade 0.4s ease-in;
   width: 1090px;
   margin: 100px auto;
   display: grid; 
@@ -379,4 +380,42 @@ label[for=no] {
 
 .card .rating0{
   background-color: #e06552;
+}
+
+.delete-button {
+  cursor: pointer;
+  font-size: 10px;
+  width: 22px;
+  height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  position:absolute;
+  top: 238px;
+  right: 30px;
+  outline: none;
+  border: none;
+  background-color: #dfd7c0;
+}
+.update-button {
+  cursor: pointer;
+  font-size: 10px;
+  width: 22px;
+  height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  position:absolute;
+  top: 260px;
+  outline: none;
+  border: none;
+  right: 30px;
+  background-color: #dfd7c0;
+}
+
+.delete-button:hover {
+  background-color: #f8efd5;
+  box-shadow: 0 2px 2px 0 #00000033;
+}
+.update-button:hover {
+  background-color: #f0e8d1;
+  box-shadow: 0 2px 2px 0 #00000033;
 }

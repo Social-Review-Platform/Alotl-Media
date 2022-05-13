@@ -4,7 +4,7 @@ import Nav from './components/Nav.jsx';
 import Login from './routes/Login.jsx';
 import SignUp from './routes/SignUp.jsx';
 import NotFound from './routes/NotFound.jsx';
-import CardContainer from './routes/CardContainer.jsx';
+import Cards from './routes/Cards.jsx';
 import Loading from './components/Loading.jsx';
 
 class App extends React.Component {
@@ -34,13 +34,13 @@ class App extends React.Component {
         <Router>
           <Nav loggedIn = {this.state.loggedIn}/>
           <Routes>
-            <Route path="/movie" element={<CardContainer loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} filter="Movie"/>}></Route>
-            <Route path="/book" element={<CardContainer loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} filter="Book"/>}></Route>
-            <Route path="/music" element={<CardContainer loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} filter="Music"/>}></Route>
-            <Route path="/mypage" element={<CardContainer loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} filter={this.state.user_id}/>}></Route>
+            <Route path="/movie" element={<Cards key="Movie" loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} username = {this.state.username} filter="Movie"/>}></Route>
+            <Route path="/book" element={<Cards key="Book" loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} username = {this.state.username} filter="Book"/>}></Route>
+            <Route path="/music" element={<Cards key="Music" loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} username = {this.state.username} filter="Music"/>}></Route>
+            <Route path="/mypage" element={<Cards key="MyPage" loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} username = {this.state.username} filter={this.state.user_id}/>}></Route>
             <Route path="/signup" element={<SignUp loggedIn = {this.state.loggedIn}/>}></Route>
             <Route path="/login" element={<Login loggedIn = {this.state.loggedIn}/>}></Route>
-            <Route path="/" element={<CardContainer loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} filter="Home"/>}></Route>
+            <Route exact path="/" element={<Cards key="Home" loggedIn = {this.state.loggedIn} user_id = {this.state.user_id} username = {this.state.username} filter="Home"/>}></Route>
             <Route path="/:id" element={<NotFound />}></Route>
           </Routes>
         </Router>
