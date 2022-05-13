@@ -9,6 +9,7 @@ class Nav extends React.Component {
     };
   }
   
+
   logout = (e) => {
     e.preventDefault();
     fetch('/api/user/logout')
@@ -36,7 +37,7 @@ class Nav extends React.Component {
             </div>
           </Link>
 
-          <Link to ="/book">
+          <Link to ="/book" >
             <div className="icon-container ">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25px" style={{ fill: '#fb6376', fillOpacity: '1', fillRule: 'nonzero', stroke: 'none' }}>
                 <path d="M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z"/>
@@ -58,7 +59,7 @@ class Nav extends React.Component {
             </div>
           </Link>
 
-          <Link to ="/">
+          <Link to ="/" >
             <div className="title-container">
               <svg className='axolotl' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 462.25 267.27">
                 <g id="Layer_2" data-name="Layer 2">
@@ -117,7 +118,7 @@ class Nav extends React.Component {
     } else {
       return (
         <div className="nav-container">
-          <Link to ="/movie">
+          <Link to ="/movie" >
             <div className="icon-container" key={0}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25px" style={{ fill: '#fb6376', fillOpacity: '1', fillRule: 'nonzero', stroke: 'none' }}>
               <path d="M326.1 160l127.4-127.4C451.7 32.39 449.9 32 448 32h-86.06l-128 128H326.1zM166.1 160l128-128H201.9l-128 128H166.1zM497.7 56.19L393.9 160H512V96C512 80.87 506.5 67.15 497.7 56.19zM134.1 32H64C28.65 32 0 60.65 0 96v64h6.062L134.1 32zM0 416c0 35.35 28.65 64 64 64h384c35.35 0 64-28.65 64-64V192H0V416z"/>
@@ -128,7 +129,7 @@ class Nav extends React.Component {
             </div>
           </Link>
 
-          <Link to ="/book">
+          <Link to ="/book" >
             <div className="icon-container ">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25px" style={{ fill: '#fb6376', fillOpacity: '1', fillRule: 'nonzero', stroke: 'none' }}>
               <path d="M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z"/>
@@ -139,7 +140,7 @@ class Nav extends React.Component {
             </div>
           </Link>
 
-          <Link to ="/music">
+          <Link to ="/music" >
             <div className="icon-container ">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="25px" style={{ fill: '#fb6376', fillOpacity: '1', fillRule: 'nonzero', stroke: 'none' }}>
                 <path d="M511.1 367.1c0 44.18-42.98 80-95.1 80s-95.1-35.82-95.1-79.1c0-44.18 42.98-79.1 95.1-79.1c11.28 0 21.95 1.92 32.01 4.898V148.1L192 224l-.0023 208.1C191.1 476.2 149 512 95.1 512S0 476.2 0 432c0-44.18 42.98-79.1 95.1-79.1c11.28 0 21.95 1.92 32 4.898V126.5c0-12.97 10.06-26.63 22.41-30.52l319.1-94.49C472.1 .6615 477.3 0 480 0c17.66 0 31.97 14.34 32 31.99L511.1 367.1z"/>

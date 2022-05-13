@@ -4,15 +4,16 @@ import CreateReviewCard from '../components/CreateReviewCard.jsx';
 import ReviewCard from '../components/ReviewCard.jsx';
 import Loading from '../components/Loading.jsx';
 import PleaseLogIn from '../components/PleaseLogIn.jsx';
-import YouAreLoggedIn from '../components/YouAreLoggedIn.jsx';
 
-class CardContainer extends React.Component {
+class Cards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user_id: this.props.user_id,
       loggedIn: this.props.loggedIn,
+      username: this.props.username,
       cards: [],
+      filter: this.props.filter,
       loading: true,
     };
     console.log(this.props.filter);
@@ -34,9 +35,14 @@ class CardContainer extends React.Component {
   }
 
   render() {
+  
     if (this.state.loading){
       return(
         <Loading />
+      )
+    } else if (!this.loggedIn && this.state.filter === "") {
+      return (
+        <PleaseLogIn />
       )
     } else {
       const cards = [];
@@ -53,6 +59,7 @@ class CardContainer extends React.Component {
           <ReviewCard
             key={i+1} 
             {...this.state.cards[i]}
+            loggedInUsername = {this.state.username}
             ratingStr={ratingStr} />
         )
       }
@@ -66,4 +73,4 @@ class CardContainer extends React.Component {
   }
 }
 
-export default CardContainer;
+export default Cards;
