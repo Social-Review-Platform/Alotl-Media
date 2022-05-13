@@ -22,8 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.static(path.resolve(__dirname, '../client')));
 
-
-//temp
+//temp usertable
 app.get('/usertable', (req, res) => {
   let db = require('./models/model.js');
   const query =
@@ -33,16 +32,11 @@ app.get('/usertable', (req, res) => {
       console.log(data.rows)
       res.status(200).json(data.rows)
     })
-  // return res.redirect('/');usert
 })
 
 app.use('/api/user', userApiRouter);
 app.use('/api/review', reviewApiRouter);
 
-
-//
-
-// app.use('/media', mediaApiRouter);
 
 app.use("*", (req, res) => {
   console.log('react will handle it')

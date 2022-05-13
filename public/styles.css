@@ -9,6 +9,15 @@ body {
 
 
 /* * * * * * * * * * * * *
+          Loading
+ * * * * * * * * * * * * */
+ .plain-text {
+   width: 100vw;
+   text-align: center;
+   margin-top: 300px;
+ }
+ 
+/* * * * * * * * * * * * *
             header
  * * * * * * * * * * * * */
 .nav-container {

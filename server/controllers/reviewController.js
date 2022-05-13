@@ -3,6 +3,8 @@ const db = require('../models/model.js');
 const reviewController = {};
 
 
+
+
 reviewController.createReview = (req, res, next) => {
   // console.log(req.body.radio);
   // let rating = 0;
@@ -38,30 +40,77 @@ reviewController.createReview = (req, res, next) => {
 }
 
 
-reviewController.recentReview = (req, res, next) => {
-  console.log(req.query.filter);
+reviewController.recentReviewFilterMedia = (req, res, next) => {
+  console.log('filter is ', req.params.filter);
+  const filter = req.params.filter;
+
+  //filter can be
+  // Book, Movie, Music
+  // or a number (user_id)
+  // Home
+
+  // SELECT "public"."public.Review"._id, "public"."public.User".username, "public"."public.Review".review, "public"."public.Review".rating, "public"."public.Media".title, "public"."public.Media".type
+  // FROM "public"."public.User"
+  // INNER JOIN "public"."public.Review"
+  // ON "public"."public.User"._id = "public"."public.Review".user_id
+  // INNER JOIN "public"."public.Media"
+  // ON "public"."public.Review".media_id = "public"."public.Media"._id
+  // WHERE "public"."public.Media".type = 'Book'
+
 
   let query = `SELECT "public"."public.User".username, "public"."public.Review".review, "public"."public.Review".rating, "public"."public.Media".title, "public"."public.Media".type
   FROM "public"."public.User"
   INNER JOIN "public"."public.Review"
   ON "public"."public.User"._id = "public"."public.Review".user_id
   INNER JOIN "public"."public.Media"
-  ON "public"."public.Review".media_id = "public"."public.Media"._id `
+  ON "public"."public.Review".media_id = "public"."public.Media"._id
+  WHERE "public"."public.Media".type = $1 
+  ORDER BY "public"."public.Review"._id DESC LIMIT 19`;
 
-  query +=  ` ORDER BY "public"."public.Review"._id DESC LIMIT 19`;
-
-  console.log(query);
-
-  db.query(query)
+  // console.log(query);
+  // [$1]
+  db.query(query, [filter])
   .then( data => {
     // console.log(data.rows);
     res.locals.reviews = data.rows;
     return next();
   });
-
-    
 }
 
+reviewController.recentReviewFilterUser = (req, res, next) => { 
+  
+  console.log('filter is ', req.params.id);
+  const filter = req.params.id;
+
+  let query = `SELECT "public"."public.User".username, "public"."public.Review".review, "public"."public.Review".rating, "public"."public.Media".title, "public"."public.Media".type
+  FROM "public"."public.User"
+  INNER JOIN "public"."public.Review"
+  ON "public"."public.User"._id = "public"."public.Review".user_id
+  INNER JOIN "public"."public.Media"
+  ON "public"."public.Review".media_id = "public"."public.Media"._id`
+
+
+
+  if(filter === "Home"){
+    query += ` ORDER BY "public"."public.Review"._id DESC LIMIT 19`;
+
+    db.query(query)
+    .then(data => {
+      res.locals.reviews = data.rows
+      return next()
+    })
+  } else {
+    query += ` WHERE "public"."public.User"._id = $1 ORDER BY "public"."public.Review"._id DESC LIMIT 19`;
+
+    db.query(query, [filter])
+    .then(data => {
+      res.locals.reviews = data.rows
+      return next()
+    })
+  }    
+
+  
+}
 
 module.exports = reviewController;
 
