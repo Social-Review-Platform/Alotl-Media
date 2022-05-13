@@ -7,6 +7,7 @@ const sessionController = require('../controllers/sessionController')
 const reviewController = require('../controllers/reviewController')
 
 const router = express.Router();
+
 // original route maybe of use later 
 // router.post('/', mediaController.findMedia, mediaController.createMedia, mediaController.findUser, mediaController.createReview, (req, res) => {
 //   return res.status(200).json(res.locals.review)
@@ -22,51 +23,24 @@ router.post('/createreview',
   reviewController.createReview,
   (req, res) => {
     // redirect to what route?
-<<<<<<< HEAD
     res.redirect('/mypage');
   });
 
-// router.post('/createreview',  (req, res) => {
-//   console.log('hhihi', req.body);
-//   res.redirect('/home')
-// });
-=======
-    res.redirect('/home')
-  }
-);
->>>>>>> 594d78a94aac18525693fe86cc9eefa6498e723c
+router.patch('/update',
+ cookieController.getCookie,
+ sessionController.verifySession,
+ reviewController.createReview,
+  (req, res) => {res.redirect('/home')});
 
-// router.post('/', mediaController.findMedia, mediaController.createMedia, mediaController.findUser, mediaController.createReview, (req, res) => {
-//   return res.status(200).json(res.locals.review)
-// });
-
-router.get('/recentreview', reviewController.recentReview, (req, res) => {
-  // console.log(res.locals.reviews);
+router.get('/recentreview/media/:filter', reviewController.recentReviewFilterMedia, (req, res) => {
   return res.status(200).json(res.locals.reviews)
 });
 
 
-// router.get('/api/review/recentBooksReview', reviewController.recentBookReview, (req, res) => {
-//   return res.status(200).json(res.locals.reviews)
-// });
-
-
-// router.get('/api/review/recentMoviesReview', reviewController.recentMovieReview, (req, res) => {
-//   return res.status(200).json(res.locals.reviews)
-// });
-
-
-// router.get('/api/review/recentMusicReview', reviewController.recentMusicReview, (req, res) => {
-//   return res.status(200).json(res.locals.reviews)
-// });
-
-
-// router.get('/api/review/:id', reviewController.recentMusicReview, (req, res) => {
-//   return res.status(200).json(res.locals.reviews)
-// });
-
-
-
+router.get('/recentreview/user/:id', reviewController.recentReviewFilterUser, (req, res) => {
+  // console.log(res.locals.reviews);
+  return res.status(200).json(res.locals.reviews)
+});
 
 
 

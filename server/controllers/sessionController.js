@@ -63,7 +63,7 @@ sessionController.verifySession = (req, res, next) => {
       return next();
     })
     .catch(err => {
-      return res.redirect('/login')
+      return res.status(200).json({loading: false})
     })
   
 };

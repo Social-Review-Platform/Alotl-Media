@@ -5,6 +5,7 @@ const mediaController = {};
 mediaController.getMediaIdByTitle = (req, res, next) => {
   const {title, type} = req.body;
   const query = 'SELECT _id FROM "public"."public.Media" WHERE title=$1 AND type=$2';
+  
   db.query(query, [title, type])
     .then(data => {
       console.log(data);

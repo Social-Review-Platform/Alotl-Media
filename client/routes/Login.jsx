@@ -1,8 +1,13 @@
 const React = require('react');
+import YouAreLoggedIn from '../components/YouAreLoggedIn.jsx';
 
-class SignUp extends React.Component {
 
-  render() {
+export default function(props) {
+  if (props.loggedIn){
+    return (
+      <YouAreLoggedIn />
+    )
+  } else {
     return (
       <div className="usercred-box">
         <div className="usercred-title">ALOTL</div>
@@ -15,5 +20,3 @@ class SignUp extends React.Component {
     )
   }
 }
-
-export default SignUp;

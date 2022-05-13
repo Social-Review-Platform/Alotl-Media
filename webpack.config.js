@@ -49,8 +49,6 @@ module.exports = {
     // enable HMR on the devServer
     hot: true,
     // // fallback to root for other urls
-    historyApiFallback: true,
-    constentBase: './',
     proxy: {
       '*': { target: 'http://localhost:3000' },
       '/api': { target: 'http://localhost:3000' },
