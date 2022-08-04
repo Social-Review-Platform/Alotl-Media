@@ -2,12 +2,15 @@
 A centralized platform for sharing recommendations and ratings for all media types with friends!
 <br>
 ### Homepage when you load the app
+All review cards will be displayed showing the media title and info. The review "ALOTL" or "NOTALOTL" represents a good review or bad review.
 <img src='./assets/homepage.png'>
 
 ### Routed page after you login with a username/password and go to My Page
+After successfully logging in you can create a review card with the option to update or delete your review.
 <img src='./assets/create-review.png'>
 
 ### Homepage after you logged in and created a review
+All review cards now displaying your recently created review cards.
 <img src='./assets/homepage-with-review.png'>
 
 ## Here is the sketch and planning of the project before production
