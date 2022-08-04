@@ -3,15 +3,12 @@ A centralized platform for sharing recommendations and ratings for all media typ
 <br>
 ### Homepage when you load the app
 <img src='./assets/homepage.png'>
-<br><br>
 
 ### Routed page after you login with a username/password and go to My Page
 <img src='./assets/create-review.png'>
-<br>
 
 ### Homepage after you logged in and created a review
 <img src='./assets/homepage-with-review.png'>
-<br>
 
 ## Here is the sketch and planning of the project before production
 
