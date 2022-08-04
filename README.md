@@ -1,19 +1,19 @@
 # Alotl Media
 A centralized platform for sharing recommendations and ratings for all media types with friends!
-<br><br>
-### This is what the homepage looks like when you load the app
+<br>
+### Homepage when you load the app
 <img src='./assets/homepage.png'>
 <br><br>
 
-### This is what the page will look like after you login with a username/password and go to My Page
+### Routed page after you login with a username/password and go to My Page
 <img src='./assets/create-review.png'>
-<br><br>
+<br>
 
-### This is what the homepage will look like after you create a review
+### Homepage after you logged in and created a review
 <img src='./assets/homepage-with-review.png'>
-<br><br>
+<br>
 
-# Here is the sketch and planning of the project before production
+## Here is the sketch and planning of the project before production
 
 ### User Profile Page
 ![image](https://user-images.githubusercontent.com/11655553/167235402-3db055cd-c0d9-4783-bb2a-65bb4c0d340c.png)
