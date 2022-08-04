@@ -2,15 +2,15 @@
 A centralized platform for sharing recommendations and ratings for all media types with friends!
 <br><br>
 ### This is what the homepage looks like when you load the app
-<img src='./assests/homepage.png'>
+<img src='./assets/homepage.png'>
 <br><br>
 
 ### This is what the page will look like after you login with a username/password and go to My Page
-<img src='./assests/create-review.png'>
+<img src='./assets/create-review.png'>
 <br><br>
 
 ### This is what the homepage will look like after you create a review
-<img src='./assests/homepage-with-review.png'>
+<img src='./assets/homepage-with-review.png'>
 <br><br>
 
 # Here is the sketch and planning of the project before production
