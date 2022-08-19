@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const userApiRouter = require('./routers/userApi.js');
 const reviewApiRouter = require('./routers/reviewApi.js');
+require("dotenv").config();
 
 const webpack = require('webpack');
 const config = require('../webpack.config');
